@@ -28,10 +28,12 @@ const showBooks = (books) => {
         div.classList.add('col')
         div.innerHTML = `
         <div class="card h-100">
-            <img src= "https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top" alt="...">
+            <img src= "https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top w-100 h-50" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h3 class="card-title"><span class="text-info">Name :</span> ${book.title}</h3>
+                <h5><span class="text-info">Author name :</span> ${book.author_name ? book.author_name : 'Not found' }</h5>
+                <h5><span class="text-info">First publish year :</span> ${book.first_publish_year ? book.first_publish_year : 'Not found' }</h5>
+                <h5><span class="text-info">Publisher :</span> ${book.publisher ? book.publisher : 'Not found' }</h5>
             </div>
         </div>
         `
