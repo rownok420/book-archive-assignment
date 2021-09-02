@@ -1,10 +1,10 @@
-const searceField = document.getElementById('input-field')
-const displayBooks = document.getElementById('display-books')
-const spinner = document.getElementById('spinner')
-spinner.style.display = 'none'
-const foundResult = document.getElementById('found-result')
-const errorMessage1 = document.getElementById('error1')
-const errorMessage2 = document.getElementById('error2')
+const searceField = document.getElementById('input-field');
+const displayBooks = document.getElementById('display-books');
+const spinner = document.getElementById('spinner');
+spinner.style.display = 'none';
+const foundResult = document.getElementById('found-result');
+const errorMessage1 = document.getElementById('error1');
+const errorMessage2 = document.getElementById('error2');
 
 // searce books
 
@@ -14,55 +14,52 @@ const searceBook = () => {
 
     if(searceText === '') {
         // error handle 1 
-        errorMessage1.style.display = 'block'
+        errorMessage1.style.display = 'block';
         // clear display
         displayBooks.innerText = '';
-        foundResult.style.display = 'none'
-        errorMessage2.style.display = 'none'
+        foundResult.style.display = 'none';
+        errorMessage2.style.display = 'none';
 
     }
     else{
         // add spinner
-        spinner.style.display = 'block'
+        spinner.style.display = 'block';
         // clear display
         displayBooks.innerText = '';
-        foundResult.style.display = 'none'
-        errorMessage1.style.display = 'none'
-        errorMessage2.style.display = 'none'
+        foundResult.style.display = 'none';
+        errorMessage1.style.display = 'none';
+        errorMessage2.style.display = 'none';
 
         // fetch data
         fetch(`https://openlibrary.org/search.json?q=${searceText}`)
             .then(res => res.json())
             .then(data => showBooks(data))
-            // .catch(err => console.log(err.message))
     }
 
 }
 
 const showBooks = (books) => {
-    console.log(books.docs.length)
     // found result 
-    foundResult.style.display = 'none'
+    foundResult.style.display = 'none';
     foundResult.innerHTML = `
-    <h2 class="text-center fw-bold text-info"> ${books.numFound} Items Found and Display ${books.docs.length} Items</h2> 
+    <h2 class="text-center fw-bold text-info"> Showing <span class="fst-italic text-success">${books.docs.length}</span> of <span class="fst-italic text-success">${books.numFound}</span> found items </h2> 
     `
     // error handle 2
     if(books.docs.length === 0){
-        errorMessage2.style.display = 'block'
+        errorMessage2.style.display = 'block';
     }else if(books.docs.length > 0){
-        foundResult.style.display = 'block'
-        errorMessage2.style.display = 'none'
+        foundResult.style.display = 'block';
+        errorMessage2.style.display = 'none';
     }
-
-    
+  
     // spinner
-    spinner.style.display = 'none'
+    spinner.style.display = 'none';
 
     displayBooks.innerText = '';
-    const allBooks = books.docs
+    const allBooks = books.docs;
     allBooks.forEach(book => {
         const div = document.createElement('div');
-        div.classList.add('col')
+        div.classList.add('col');
         div.innerHTML = `
         <div class="card h-100">
             <img src= "https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top w-100 mb-5" style="height: 250px; object-fit: cover;">
@@ -74,7 +71,7 @@ const showBooks = (books) => {
             </div>
         </div>
         `
-        displayBooks.appendChild(div)
+        displayBooks.appendChild(div);
 
     });
 }
