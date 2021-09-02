@@ -19,11 +19,11 @@ const searceBook = () => {
 }
 
 const showBooks = (books) => {
-    console.log(books)
+    // console.log(books)
     displayBooks.innerText = '';
     const allBooks = books.docs
     allBooks.forEach(book => {
-        console.log(book)
+        // console.log(book)
         const div = document.createElement('div');
         div.classList.add('col')
         div.innerHTML = `
