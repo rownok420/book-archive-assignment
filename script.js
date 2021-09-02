@@ -11,7 +11,7 @@ const searceBook = () => {
         console.log('empty')
     }
     else{
-        fetch(`http://openlibrary.org/search.json?q=${searceText}`)
+        fetch(`HTTPS://openlibrary.org/search.json?q=${searceText}`)
             .then(res => res.json())
             .then(data => showBooks(data))
     }
