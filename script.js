@@ -31,7 +31,7 @@ const searceBook = () => {
         errorMessage2.style.display = 'none'
 
         // fetch data
-        fetch(`HTTPS://openlibrary.org/search.json?q=${searceText}`)
+        fetch(`https://openlibrary.org/search.json?q=${searceText}`)
             .then(res => res.json())
             .then(data => showBooks(data))
     }
